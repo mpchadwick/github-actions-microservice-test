@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
+      - name: Start microservice
+        run: |
+          wget https://github.com/mpchadwick/hello-server/releases/download/v0.1.1/hello-server_0.1.1_Linux_x86_64.tar.gz
+          tar xzf hello-server_0.1.1_Linux_x86_64.tar.gz
+          ./hello-server &
       - uses: helaili/jekyll-action@2.0.1
         env:
           JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
